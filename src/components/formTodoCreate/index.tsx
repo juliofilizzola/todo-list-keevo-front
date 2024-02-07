@@ -1,5 +1,5 @@
 import { Button, FormControl, FormErrorMessage, FormLabel, Input, useToast } from '@chakra-ui/react';
-import { Field, Form, Formik } from 'formik';
+import { Field, FieldInputProps, Form, Formik, FormikProps } from 'formik';
 import { createTodo } from '../../service/todo.ts';
 
 const FormTodoCreate = () => {
@@ -39,8 +39,8 @@ const FormTodoCreate = () => {
       {(props) => (
         <Form>
           <Field name='title' validate={validateName}>
-            {({ field, form }) => (
-              <FormControl isInvalid={form.errors.name && form.touched.name}>
+            {({ field, form }: { field: FieldInputProps<string>, form: FormikProps<{ name: string, surname: string }> }) => (
+              <FormControl isInvalid={!!form.errors.name && !!form.touched.name}>
                 <FormLabel>Titulo da sua tarefa</FormLabel>
                 <Input {...field} placeholder='Comprar leite' />
                 <FormErrorMessage>{form.errors.name}</FormErrorMessage>
@@ -48,8 +48,8 @@ const FormTodoCreate = () => {
             )}
           </Field>
           <Field name='description' validate={validateName}>
-            {({ field, form }) => (
-              <FormControl isInvalid={form.errors.name && form.touched.name}>
+            {({ field, form }: { field: FieldInputProps<string>, form: FormikProps<{ name: string, surname: string }> }) => (
+              <FormControl isInvalid={!!form.errors.name && !!form.touched.name}>
                 <FormLabel>Descrição da sua tarefa</FormLabel>
                 <Input {...field} placeholder='Preciso fazer um bolo' />
                 <FormErrorMessage>{form.errors.name}</FormErrorMessage>

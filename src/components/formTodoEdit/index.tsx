@@ -1,5 +1,5 @@
 import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input, Select, useToast } from '@chakra-ui/react';
-import { Field, Form, Formik } from 'formik';
+import { Field, FieldInputProps, Form, Formik, FormikProps } from 'formik';
 import { updateTodo } from '../../service/todo.ts';
 import { mapperStatus } from '../../utils/mapper-status.ts';
 import { useNavigate } from 'react-router-dom';
@@ -62,8 +62,9 @@ const FormTodo = ({title, description, status, id}: IFormTodo) => {
         {(props) => (
           <Form>
             <Field name='title' validate={validateName}>
-              {({ field, form }) => (
-                <FormControl isInvalid={form.errors.name && form.touched.name}>
+
+              {({ field, form }: { field: FieldInputProps<string>, form: FormikProps<{ name: string, surname: string }> }) => (
+                <FormControl isInvalid={!!form.errors.name && !!form.touched.name}>
                   <FormLabel>Titulo da sua tarefa</FormLabel>
                   <Input {...field} placeholder='Comprar leite' />
                   <FormErrorMessage>{form.errors.name}</FormErrorMessage>
@@ -71,8 +72,8 @@ const FormTodo = ({title, description, status, id}: IFormTodo) => {
               )}
             </Field>
             <Field name='description' validate={validateName}>
-              {({ field, form }) => (
-                <FormControl isInvalid={form.errors.name && form.touched.name}>
+              {({ field, form }: { field: FieldInputProps<string>, form: FormikProps<{ name: string, surname: string }> }) => (
+                <FormControl isInvalid={!!form.errors.name && !!form.touched.name}>
                   <FormLabel>Descrição da sua tarefa</FormLabel>
                   <Input {...field} placeholder='Preciso fazer um bolo' />
                   <FormErrorMessage>{form.errors.name}</FormErrorMessage>
@@ -80,8 +81,8 @@ const FormTodo = ({title, description, status, id}: IFormTodo) => {
               )}
             </Field>
             <Field name='status' validate={validateName}>
-              {({ field, form }) => (
-                <FormControl isInvalid={form.errors.name && form.touched.name}>
+              {({ field, form }: { field: FieldInputProps<string>, form: FormikProps<{ name: string, surname: string }> }) => (
+                <FormControl isInvalid={!!form.errors.name && !!form.touched.name}>
                   <FormLabel>Status da sua tarefa</FormLabel>
                   <Select {...field} name='status' placeholder='Selecione o status'>
                     <option>created</option>
