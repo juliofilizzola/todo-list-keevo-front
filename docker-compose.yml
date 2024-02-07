@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  react-app:
+    container_name: todo-list-front
+    image: node:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/react-vite-app
+    working_dir: /react-vite-app
+    command: bash -c "yarn install && yarn run dev"
+    ports:
+      - "4000:4000"
