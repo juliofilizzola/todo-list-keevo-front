@@ -23,3 +23,15 @@ Para rodar o docker é simples.
 ````bash
   docker compose up -d
 ````
+
+ou rode localmente:
+
+````bash
+  yarn
+````
+
+e depois
+
+````bash
+  yarn run dev
+````
